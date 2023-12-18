@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        article {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Dad's Menu</h1>
+    </header>
+
+    <section>
+        <article>
+            <h2>Breakfast</h2>
+            <form id="breakfast-form">
+                <label><input type="checkbox" name="item" value="ABB&J Sandwich"> ABB&J Sandwich (Almond Butter, Banana, and Jelly)</label>
+                <label><input type="checkbox" name="item" value="French Toast"> French Toast</label>
+                <label><input type="checkbox" name="item" value="Plain Pancakes"> Plain Pancakes</label>
+                <label><input type="checkbox" name="item" value="Pancakes with Blueberries"> Pancakes with Blueberries</label>
+                <label><input type="checkbox" name="item" value="Frozen Waffles"> Frozen Waffles</label>
+                <label><input type="checkbox" name="item" value="Potatoes and Eggs"> Potatoes and Eggs</label>
+                <label><input type="checkbox" name="item" value="Country Fried Potatoes"> Country Fried Potatoes</label>
+            </form>
+        </article>
+
+        <article>
+            <h2>Lunch</h2>
+            <form id="lunch-form">
+                <label><input type="checkbox" name="item" value="Turkey Sandwich"> Turkey Sandwich</label>
+                <label><input type="checkbox" name="item" value="Ham Sandwich"> Ham Sandwich</label>
+                <label><input type="checkbox" name="item" value="Tuna Fish Sandwich"> Tuna Fish Sandwich</label>
+                <label><input type="checkbox" name="item" value="Lunchable"> Lunchable</label>
+                <label><input type="checkbox" name="item" value="Quesadilla"> Quesadilla</label>
+                <label><input type="checkbox" name="item" value="Hot Dogs"> Hot Dogs</label>
+            </form>
+        </article>
+
+        <article>
+            <h2>Dinner</h2>
+            <form id="dinner-form">
+                <label><input type="checkbox" name="item" value="Lasagna"> Lasagna</label>
+                <label><input type="checkbox" name="item" value="Spaghetti"> Spaghetti</label>
+                <label><input type="checkbox" name="item" value="Pork Chops"> Pork Chops</label>
+                <label><input type="checkbox" name="item" value="Rotisserie Chicken"> Rotisserie Chicken</label>
+                <label><input type="checkbox" name="item" value="Chicken Drumsticks"> Chicken Drumsticks</label>
+                <label><input type="checkbox" name="item" value="Taquitos"> Taquitos</label>
+                <label><input type="checkbox" name="item" value="Tostinoes"> Tostinoes</label>
+                <label><input type="checkbox" name="item" value="Totino's Pizza Rolls"> Totino's Pizza Rolls</label>
+                <label><input type="checkbox" name="item" value="Frozen Pizza"> Frozen Pizza</label>
+                <label><input type="checkbox" name="item" value="Handmade Pizza"> Handmade Pizza</label>
+            </form>
+        </article>
+
+        <article>
+            <h2>Sides</h2>
+            <form id="sides-form">
+                <label><input type="checkbox" name="item" value="Salad"> Salad</label>
+                <label><input type="checkbox" name="item" value="Corn on the Cob"> Corn on the Cob</label>
+                <label><input type="checkbox" name="item" value="Brussel Sprouts"> Brussel Sprouts</label>
+                <label><input type="checkbox" name="item" value="Peas"> Peas</label>
+                <label><input type="checkbox" name="item" value="Butter-Fried Mushrooms"> Butter-Fried Mushrooms</label>
+                <label><input type="checkbox" name="item" value="Asparagus with Hollandaise Sauce"> Asparagus with Hollandaise Sauce</label>
+                <label><input type="checkbox" name="item" value="Broccoli"> Broccoli</label>
+            </form>
+        </article>
+
+        <article>
+            <h2>Other</h2>
+            <form id="other-form">
+                <label><input type="checkbox" name="item" value="Something from Food.com"> Something from <a href="https://www.food.com/" target="_blank">Food.com</a></label>
+                <label><input type="checkbox" name="item" value="Something Else"> Something Else</label>
+            </form>
+        </article>
+    </section>
+
+    <button onclick="sendOrder()">Request</button>
+
+    <script>
+        function sendOrder() {
+            const breakfastItems = getCheckedItems("breakfast-form");
+            const lunchItems = getCheckedItems("lunch-form");
+            const dinnerItems = getCheckedItems("dinner-form");
+            const sidesItems = getCheckedItems("sides-form");
+            const otherItems = getCheckedItems("other-form");
+
+            const subject = encodeURIComponent("Feed Me!");
+            const bodyArray = [];
+
+            if (breakfastItems) bodyArray.push(`Breakfast:\n${breakfastItems}`);
+            if (lunchItems) bodyArray.push(`Lunch:\n${lunchItems}`);
+            if (dinnerItems) bodyArray.push(`Dinner:\n${dinnerItems}`);
+            if (sidesItems) bodyArray.push(`Sides:\n${sidesItems}`);
+            if (otherItems) bodyArray.push(`Other:\n${otherItems}`);
+
+            const body = encodeURIComponent(bodyArray.join("\n\n"));
+
+            const yourEmailAddress = "delphedwin@gmail.com";
+			const mailtoLink = `mailto:${yourEmailAddress}?subject=${subject}&body=${body}`;
+			window.location.href = mailtoLink;
+
+        }
+
+        function getCheckedItems(formId) {
+            const form = document.getElementById(formId);
+            const checkedItems = Array.from(form.elements)
+                .filter(item => item.type === "checkbox" && item.checked)
+                .map(item => {
+                    if (item.value === "Something from Food.com") {
+                        return `Here's a link to a recipe on Food.com: `;
+                    } else if (item.value === "Something Else") {
+                        return "Could I please have ...";
+                    } else {
+                        return item.value;
+                    }
+                });
+            return checkedItems.join("\n");
+        }
+    </script>
+</body>
+
+</html>
