@@ -438,7 +438,7 @@
 					ingredientsArray.push(ingredientCheckbox.value);
 				});
 			});
-			return Array.from(new Set(ingredientsArray)).join("\n");
+			return Array.from(new Set(ingredientsArray)).concat(['']).join("\n");
 		}
 
 		function getCheckedItems(formId) {
