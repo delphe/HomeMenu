@@ -418,9 +418,8 @@
 			
 			// Combine all ingredients into a single array
 			const allIngredientsArray = [].concat(breakfastIngredients, lunchIngredients, dinnerIngredients);
+			const allIngredientsArraySplit = allIngredientsArray.join('\n').split('\n').filter(item => item.trim() !== '');
 			
-			const allIngredientsArraySplit = allIngredientsArray.join('\n').split('\n');
-						
 			// Filter out ingredients that are in the availableIngredients array
 			const shoppingListIngredients = allIngredientsArraySplit.filter(ingredient => !availableIngredients.includes(ingredient));
 			
