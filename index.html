@@ -353,7 +353,7 @@
 
     <script>
 		// Array of available ingredients
-		const availableIngredients = ['bread', 'banana', 'almond butter', 'strawberry jam', 'eggs', 'maple syrup', 'blueberries', 'pancake mix', 'cinnamon', 'potatoes', 'garlic', 'onion', 'butter', 'bacon', 'plain frozen waffles', 'sliced ham', 'sliced cheese', 'tunafish', 'tomatoes', 'butter spread', 'mustard', 'mayo', 'sliced pickles', 'shreaded cheese', 'flour tortillas', 'hot dogs', 'hot dog buns', 'ketchup', 'tomato paste', 'diced tomatoes', 'italian seasoning', 'ground turkey', 'ham', 'kalamata olives', 'margarita pizza', 'chicken taquitos', 'nacho chips', 'salsa', 'sour cream', 'shreaded cheese', 'refried beans', 'tomatoes', 'green onions', 'cilantro', 'garlic salt', 'basil pesto', 'cereal', 'vanilla almond milk'];
+		const availableIngredients = ['bread', 'banana', 'almond butter', 'strawberry jam', 'eggs', 'maple syrup', 'blueberries', 'pancake mix', 'cinnamon', 'potatoes', 'garlic', 'onion', 'butter', 'bacon', 'plain frozen waffles', 'sliced ham', 'sliced cheese', 'tunafish', 'tomatoes', 'butter spread', 'mustard', 'mayo', 'sliced pickles', 'shreaded cheese', 'flour tortillas', 'hot dogs', 'hot dog buns', 'ketchup', 'tomato paste', 'diced tomatoes', 'italian seasoning', 'ground turkey', 'ham', 'kalamata olives', 'margarita pizza', 'chicken taquitos', 'nacho chips', 'salsa', 'sour cream', 'shreaded cheese', 'refried beans', 'tomatoes', 'green onions', 'cilantro', 'garlic salt', 'basil pesto', 'cereal'];
 		
 		// Function to apply classes to labels based on ingredient availability
 		function applyIngredientClasses() {
@@ -389,6 +389,9 @@
 			const allIngredients = getAllCheckedIngredients();
 			bodyArray.push(`Ingredients:\n${allIngredients}`);
 			
+			const shoppingList = getShoppingList();
+			if (shoppingList) bodyArray.push(`Shopping List:\n${shoppingList}`);
+			
             const body = encodeURIComponent(bodyArray.join("\n\n"));
 
             const yourEmailAddress = "delphedwin@gmail.com";
@@ -406,6 +409,25 @@
 			// Join the array into a string without any separator
 			const allIngredientsString = allIngredientsArray.join('');
 			return allIngredientsString;
+		}
+		
+		function getShoppingList() {
+			const breakfastIngredients = getIngredients("breakfast-form");
+			const lunchIngredients = getIngredients("lunch-form");
+			const dinnerIngredients = getIngredients("dinner-form");
+			
+			// Combine all ingredients into a single array
+			const allIngredientsArray = [].concat(breakfastIngredients, lunchIngredients, dinnerIngredients);
+			
+			const allIngredientsArraySplit = allIngredientsArray.join('\n').split('\n');
+						
+			// Filter out ingredients that are in the availableIngredients array
+			const shoppingListIngredients = allIngredientsArraySplit.filter(ingredient => !availableIngredients.includes(ingredient));
+			
+			// Join the array into a string without any separator
+			const shoppingListIngredientsString = shoppingListIngredients.join('\n');
+
+			return shoppingListIngredientsString;
 		}
 
         function getCheckedItems(formId) {
@@ -464,9 +486,6 @@
 				});
 			return checkedItems.join("\n");
 		}
-
-
-
     </script>
 </body>
 
