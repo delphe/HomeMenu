@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Menu</title>
+    <title>Dad's Menu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -150,7 +150,13 @@
 						<label><input type="checkbox" name="ingredient" value="chocolate chip frozen waffles"> chocolate chip frozen waffles</label>
 					</p>
 					</div>
-				<label><input type="checkbox" name="item" value="Cereal"> Cereal</label>
+				<label><input type="checkbox" name="item" value="Cereal" onchange="toggleIngredients(this, 'cereal-ingredients')"> Cereal</label>
+		    			<div id="cereal-ingredients" style="display: none;">
+					<p id="ingredients-list">
+						<label><input type="checkbox" name="ingredient" value="cereal"> cereal</label>
+						<label><input type="checkbox" name="ingredient" value="vanilla almond milk"> vanilla almond milk</label>
+					</p>
+					</div>
             </form>
         </article>
 
@@ -185,6 +191,8 @@
 						<p id="ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="hot dogs" disabled> hot dogs</label>
 							<label><input type="checkbox" name="ingredient" value="hot dog buns" disabled> hot dog buns</label>
+							<label><input type="checkbox" name="ingredient" value="ketchup"> ketchup</label>
+							<label><input type="checkbox" name="ingredient" value="mustard"> mustard</label>
 						</p>
 					</div>
 				<label><input type="checkbox" name="item" value="Lunchable"> Lunchable</label>
@@ -262,7 +270,7 @@
 							<label><input type="checkbox" name="ingredient" value="salsa"> salsa</label>
 							<label><input type="checkbox" name="ingredient" value="sour cream"> sour cream</label>
 							<label><input type="checkbox" name="ingredient" value="shreaded cheese"> shreaded cheese</label>
-							<label><input type="checkbox" name="ingredient" value="beens"> beens</label>
+							<label><input type="checkbox" name="ingredient" value="refried beans"> refried beans</label>
 							<label><input type="checkbox" name="ingredient" value="ground turkey"> ground turkey</label>
 							<label><input type="checkbox" name="ingredient" value="tomatoes"> tomatoes</label>
 							<label><input type="checkbox" name="ingredient" value="green onions"> green onions</label>
@@ -274,7 +282,7 @@
 					<div id="bean-burrito-ingredients" style="display: none;">
 						<p id="ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="flour tortillas" disabled> flour tortillas</label>
-							<label><input type="checkbox" name="ingredient" value="beens" disabled> beens</label>
+							<label><input type="checkbox" name="ingredient" value="refried beans" disabled> refried beans</label>
 							<label><input type="checkbox" name="ingredient" value="salsa"> salsa</label>
 							<label><input type="checkbox" name="ingredient" value="sour cream"> sour cream</label>
 							<label><input type="checkbox" name="ingredient" value="shreaded cheese"> shreaded cheese</label>
@@ -289,7 +297,7 @@
 						<p id="ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="corn tortillas" disabled> corn tortillas</label>
 							<label><input type="checkbox" name="ingredient" value="ground turkey"> ground turkey</label>
-							<label><input type="checkbox" name="ingredient" value="beens"> beens</label>
+							<label><input type="checkbox" name="ingredient" value="refried beans"> refried beans</label>
 							<label><input type="checkbox" name="ingredient" value="salsa"> salsa</label>
 							<label><input type="checkbox" name="ingredient" value="sour cream"> sour cream</label>
 							<label><input type="checkbox" name="ingredient" value="shreaded cheese"> shreaded cheese</label>
@@ -345,7 +353,7 @@
 
     <script>
 		// Array of available ingredients
-		const availableIngredients = ['bread', 'banana', 'almond butter', 'strawberry jam', 'eggs', 'maple syrup', 'blueberries', 'pancake mix', 'cinnamon', 'potatoes', 'garlic', 'onion', 'butter', 'bacon', 'plain frozen waffles', 'sliced ham', 'sliced cheese', 'tunafish', 'tomatoes', 'butter spread', 'mustard','mayo', 'sliced pickles', 'spinach', 'shreaded cheese', 'flour tortillas', 'hot dogs', 'hot dog buns', 'tomato paste', 'diced tomatoes', 'italian seasoning', 'ground turkey', 'ham', 'kalamata olives', 'margarita pizza', 'chicken taquitos', 'nacho chips', 'salsa', 'sour cream', 'shreaded cheese', 'beens', 'tomatoes', 'green onions', 'cilantro', 'guacamole', 'garlic salt', 'basil pesto'];
+		const availableIngredients = ['bread', 'banana', 'almond butter', 'strawberry jam', 'eggs', 'maple syrup', 'blueberries', 'pancake mix', 'cinnamon', 'potatoes', 'garlic', 'onion', 'butter', 'bacon', 'plain frozen waffles', 'sliced ham', 'sliced cheese', 'tunafish', 'tomatoes', 'butter spread', 'mustard', 'mayo', 'sliced pickles', 'shreaded cheese', 'flour tortillas', 'hot dogs', 'hot dog buns', 'ketchup', 'tomato paste', 'diced tomatoes', 'italian seasoning', 'ground turkey', 'ham', 'kalamata olives', 'margarita pizza', 'chicken taquitos', 'nacho chips', 'salsa', 'sour cream', 'shreaded cheese', 'refried beans', 'tomatoes', 'green onions', 'cilantro', 'garlic salt', 'basil pesto', 'cereal', 'vanilla almond milk'];
 		
 		// Function to apply classes to labels based on ingredient availability
 		function applyIngredientClasses() {
