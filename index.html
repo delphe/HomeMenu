@@ -102,7 +102,6 @@
 						<label><input type="checkbox" name="ingredient" value="bread" disabled> bread</label>
 						<label><input type="checkbox" name="ingredient" value="eggs" disabled> eggs</label>
 						<label><input type="checkbox" name="ingredient" value="maple syrup"> maple syrup</label>
-						<label><input type="checkbox" name="ingredient" value="corn syrup"> corn syrup</label>
 						<label><input type="checkbox" name="ingredient" value="banana"> banana</label>
 						<label><input type="checkbox" name="ingredient" value="strawberries"> strawberries</label>
 						<label><input type="checkbox" name="ingredient" value="blueberries"> blueberries</label>
@@ -114,7 +113,6 @@
 						<label><input type="checkbox" name="ingredient" value="pancake mix" disabled> pancake mix</label>
 						<label><input type="checkbox" name="ingredient" value="cinnamon"> cinnamon</label>
 						<label><input type="checkbox" name="ingredient" value="maple syrup"> maple syrup</label>
-						<label><input type="checkbox" name="ingredient" value="corn syrup"> corn syrup</label>
 						<label><input type="checkbox" name="ingredient" value="banana"> banana</label>
 						<label><input type="checkbox" name="ingredient" value="strawberries"> strawberries</label>
 						<label><input type="checkbox" name="ingredient" value="blueberries"> blueberries</label>
@@ -182,7 +180,7 @@
                 <label><input type="checkbox" name="item" value="Quesadilla" onchange="toggleIngredients(this, 'quesadilla-ingredients')"> Quesadilla</label>
 					<div id="quesadilla-ingredients" style="display: none;">
 						<p id="ingredients-list">
-							<label><input type="checkbox" name="ingredient" value="shreaded cheese" disabled> shreaded cheese</label>
+							<label><input type="checkbox" name="ingredient" value="shredded cheese" disabled> shredded cheese</label>
 							<label><input type="checkbox" name="ingredient" value="flour tortillas" disabled> flour tortillas</label>
 						</p>
 					</div>
@@ -216,7 +214,7 @@
 						<label><input type="checkbox" name="ingredient" value="italian seasoning" disabled> italian seasoning</label>
 						<label><input type="checkbox" name="ingredient" value="onion" disabled> onion</label>
 						<label><input type="checkbox" name="ingredient" value="garlic" disabled> garlic</label>
-						<label><input type="checkbox" name="ingredient" value="ground turkey"> ground Turkey</label>
+						<label><input type="checkbox" name="ingredient" value="ground turkey"> ground turkey</label>
 					</p>
 				</div>
 
@@ -230,7 +228,7 @@
 							<label><input type="checkbox" name="ingredient" value="italian seasoning" disabled> italian seasoning</label>
 							<label><input type="checkbox" name="ingredient" value="onion" disabled> onion</label>
 							<label><input type="checkbox" name="ingredient" value="garlic" disabled> garlic</label>
-							<label><input type="checkbox" name="ingredient" value="ground turkey"> ground Turkey</label>
+							<label><input type="checkbox" name="ingredient" value="ground turkey"> ground turkey</label>
 						</p>
 					</div>
                 <label><input type="checkbox" name="item" value="Handmade Pizza" onchange="toggleIngredients(this, 'pizza-ingredients')"> Handmade Pizza</label>
@@ -372,7 +370,7 @@
 			'mustard', 
 			'mayo', 
 			'sliced pickles', 
-			'shreaded cheese', 
+			'shredded cheese', 
 			'flour tortillas', 
 			'ketchup', 
 			'diced tomatoes', 
@@ -382,14 +380,50 @@
 			'margarita pizza', 
 			'chicken and cheese taquitos', 
 			'nacho chips', 
-			'sour creame', 
+			'sour cream', 
 			'refried beans', 
 			'garlic salt', 
 			'basil pesto', 
 			'cereal',
-			'vanilla almond milk'
+			'vanilla almond milk',
+			'banana',
+			'mushrooms',
+			'bacon',
+			'chocolate chip frozen waffles',
+			'salsa',
+			'green onions',
+			'cilantro',
+			'guacamole'
 		];
-		
+
+	    	// Array of missing ingredients
+		const missingIngredients = [
+			'strawberries',
+			'blueberries',
+			'plain frozen waffles',
+			'spinach',
+			'sliced turkey',
+			'hot dogs',
+			'hot dog buns',
+			'lasagna noodles',
+			'mozzarella',
+			'cheddar',
+			'colby jack cheese',
+			'goat cheese',
+			'tomato paste',
+			'onion',
+			'ground turkey',
+			'spaghetti noodles',
+			'pizza dough',
+			'pepperoni',
+			'pepperoni pizza',
+			'cheese pizza',
+			'chicken taquitos',
+			'corn tortillas',
+			'chives',
+			'rosso pesto'
+		];
+	    
 		// Function to apply classes to labels based on ingredient availability
 		function applyIngredientClasses() {
 			const allIngredients = Array.from(document.querySelectorAll('label:has(input[name="ingredient"])'));
