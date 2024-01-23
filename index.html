@@ -67,6 +67,16 @@
 			margin-right: 10px; /* Add spacing between ingredients */
 		}
 		
+		.ingredients-list {
+            display: none;
+        }
+		
+		.ingredients-title {
+            color: #0000EE; /* Hex color for blue */
+            text-decoration: underline;
+            cursor: pointer;
+        }
+		
 		.available {
 			color: #006400; 
 			font-weight: bold;
@@ -345,6 +355,18 @@
                 <label><input type="checkbox" name="item" value="Something Else"> Something Else</label>
             </form>
         </article>
+		
+		<article id="available-ingredients-article">
+			<h2 id="available-ingredients-title" class="ingredients-title">Available Ingredients</h2>
+			<ul id="available-ingredients-list" class="ingredients-list">
+				<!-- Items will be added dynamically using JavaScript -->
+			</ul>
+			<h2 id="missing-ingredients-title" class="ingredients-title">Missing Ingredients</h2>
+			<ul id="missing-ingredients-list" class="ingredients-list">
+				<!-- Items will be added dynamically using JavaScript -->
+			</ul>
+		</article>
+
     </section>
 
     <button onclick="sendOrder()">Request</button>
@@ -391,9 +413,7 @@
 			'bacon',
 			'chocolate chip frozen waffles',
 			'salsa',
-			'green onions',
-			'cilantro',
-			'guacamole'
+			'green onions'
 		];
 
 	    	// Array of missing ingredients
@@ -421,7 +441,9 @@
 			'chicken taquitos',
 			'corn tortillas',
 			'chives',
-			'rosso pesto'
+			'rosso pesto',
+			'cilantro',
+			'guacamole'
 		];
 	    
 		// Function to apply classes to labels based on ingredient availability
@@ -435,9 +457,6 @@
 				label.classList.toggle('unavailable', !isAvailable);
 			});
 		}
-
-		// Apply classes on page load
-		window.onload = applyIngredientClasses;
 		
         function sendOrder() {
             const breakfastItems = getCheckedItems("breakfast-form");
@@ -554,6 +573,44 @@
 				});
 			return checkedItems.join("\n");
 		}
+		
+		// Function to toggle the visibility of the ingredient list
+		function toggleIngredients(listId) {
+			const ingredientsList = document.getElementById(listId);
+			ingredientsList.style.display = (ingredientsList.style.display === 'none') ? 'block' : 'none';
+		}
+
+		// Function to populate the ingredient list
+		function populateIngredients(listId, ingredientsArray) {
+			const ingredientsList = document.getElementById(listId);
+
+			// Clear any existing items
+			ingredientsList.innerHTML = '';
+
+			// Add items from the ingredientsArray
+			ingredientsArray.forEach(ingredient => {
+				const listItem = document.createElement('li');
+				listItem.textContent = ingredient;
+				ingredientsList.appendChild(listItem);
+			});
+		}
+
+		// Attach event listeners to toggle visibility when clicking on the title
+		document.getElementById('available-ingredients-title').addEventListener('click', function () {
+			toggleIngredients('available-ingredients-list');
+		});
+
+		document.getElementById('missing-ingredients-title').addEventListener('click', function () {
+			toggleIngredients('missing-ingredients-list');
+		});
+
+		// Populate the ingredient lists on page load
+		window.onload = function () {
+			populateIngredients('available-ingredients-list', availableIngredients);
+			populateIngredients('missing-ingredients-list', missingIngredients);
+			applyIngredientClasses();
+		};
+
     </script>
 </body>
 
