@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+article {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+h2 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Style for all ingredient lists with id ending in -ingredients-list */
+[id$="-ingredients-list"] {
+    font-size: 75%;
+    margin-left: 10px;
+    /* display: none;  Removed so JS can control visibility */
+}
+
+[id$="-ingredients-list"] label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Show ingredient list when parent is visible (handled by JS) */
+.ingredients-list {
+    display: none;
+}
+
+.ingredients-title {
+    color: #0000EE;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.available {
+    color: #006400;
+    font-weight: bold;
+}
+
+.unavailable {
+    color: #808080;
+}

@@ -5,87 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dad's Menu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em;
-        }
-
-        section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
-        }
-
-        article {
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 20px;
-            width: 300px;
-            border-radius: 5px;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-		
-		#ingredients-list {
-			font-size: 75%;
-			margin-left: 10px;
-		}
-		
-		#ingredients-list label {
-			display: inline-block; /* Display labels in a line */
-			margin-right: 10px; /* Add spacing between ingredients */
-		}
-		
-		.ingredients-list {
-            display: none;
-        }
-		
-		.ingredients-title {
-            color: #0000EE; /* Hex color for blue */
-            text-decoration: underline;
-            cursor: pointer;
-        }
-		
-		.available {
-			color: #006400; 
-			font-weight: bold;
-		}
-
-		.unavailable {
-			color: #808080; 
-		}
-    </style>
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -99,7 +19,7 @@
             <form id="breakfast-form">
                 <label><input type="checkbox" name="item" value="BAB&J Sandwich" onchange="toggleIngredients(this, 'babj-ingredients')"> BAB&J Sandwich</label>
 					<div id="babj-ingredients" style="display: none;">
-					<p id="ingredients-list">
+					<p id="babj-ingredients-list">
 						<label><input type="checkbox" name="ingredient" value="bread" disabled> bread</label>
 						<label><input type="checkbox" name="ingredient" value="banana" > banana</label>
 						<label><input type="checkbox" name="ingredient" value="almond butter" disabled> almond butter</label>
@@ -108,7 +28,7 @@
 					</div>
                 <label><input type="checkbox" name="item" value="French Toast" onchange="toggleIngredients(this, 'french-toast-ingredients')"> French Toast</label>
 					<div id="french-toast-ingredients" style="display: none;">
-					<p id="ingredients-list">
+					<p id="french-toast-ingredients-list">
 						<label><input type="checkbox" name="ingredient" value="bread" disabled> bread</label>
 						<label><input type="checkbox" name="ingredient" value="eggs" disabled> eggs</label>
 						<label><input type="checkbox" name="ingredient" value="maple syrup"> maple syrup</label>
@@ -119,7 +39,7 @@
 					</div>
                 <label><input type="checkbox" name="item" value="Pancakes" onchange="toggleIngredients(this, 'pancake-ingredients')"> Pancakes</label>
 					<div id="pancake-ingredients" style="display: none;">
-					<p id="ingredients-list">
+					<p id="pancake-ingredients-list">
 						<label><input type="checkbox" name="ingredient" value="pancake mix" disabled> pancake mix</label>
 						<label><input type="checkbox" name="ingredient" value="cinnamon"> cinnamon</label>
 						<label><input type="checkbox" name="ingredient" value="maple syrup"> maple syrup</label>
@@ -130,7 +50,7 @@
 					</div>
                 <label><input type="checkbox" name="item" value="Country Fried Potatoes" onchange="toggleIngredients(this, 'cf-potatoes-ingredients')"> Country Fried Potatoes</label>
 					<div id="cf-potatoes-ingredients" style="display: none;">
-					<p id="ingredients-list">
+					<p id="cf-potatoes-ingredients-list">
 						<label><input type="checkbox" name="ingredient" value="potatoes" disabled> potatoes</label>
 						<label><input type="checkbox" name="ingredient" value="garlic"> garlic</label>
 						<label><input type="checkbox" name="ingredient" value="onion"> onion</label>
@@ -141,7 +61,7 @@
 					</div>
 				<label><input type="checkbox" name="item" value="Potatoes and Eggs" onchange="toggleIngredients(this, 'potatoes-eggs-ingredients')"> Potatoes and Eggs</label>
 					<div id="potatoes-eggs-ingredients" style="display: none;">
-					<p id="ingredients-list">
+					<p id="potatoes-eggs-ingredients-list">
 						<label><input type="checkbox" name="ingredient" value="potatoes" disabled> potatoes</label>
 						<label><input type="checkbox" name="ingredient" value="eggs" disabled> eggs</label>
 						<label><input type="checkbox" name="ingredient" value="garlic"> garlic</label>
@@ -153,14 +73,14 @@
 					</div>
 				<label><input type="checkbox" name="item" value="Frozen Waffles" onchange="toggleIngredients(this, 'waffles-ingredients')"> Frozen Waffles</label>
 					<div id="waffles-ingredients" style="display: none;">
-					<p id="ingredients-list">
+					<p id="waffles-ingredients-list">
 						<label><input type="checkbox" name="ingredient" value="plain frozen waffles"> plain frozen waffles</label>
 						<label><input type="checkbox" name="ingredient" value="chocolate chip frozen waffles"> chocolate chip frozen waffles</label>
 					</p>
 					</div>
 				<label><input type="checkbox" name="item" value="Cereal" onchange="toggleIngredients(this, 'cereal-ingredients')"> Cereal</label>
 		    			<div id="cereal-ingredients" style="display: none;">
-					<p id="ingredients-list">
+					<p id="cereal-ingredients-list">
 						<label><input type="checkbox" name="ingredient" value="cereal" disabled> cereal</label>
 						<label><input type="checkbox" name="ingredient" value="vanilla almond milk" disabled> vanilla almond milk</label>
 					</p>
@@ -173,7 +93,7 @@
             <form id="lunch-form">
                 <label><input type="checkbox" name="item" value="Sandwich" onchange="toggleIngredients(this, 'sandwich-ingredients')"> Sandwich</label>
 					<div id="sandwich-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="sandwich-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="bread" disabled> bread</label>
 							<label><input type="checkbox" name="ingredient" value="sliced ham"> sliced ham</label>
 							<label><input type="checkbox" name="ingredient" value="sliced turkey"> sliced turkey</label>
@@ -189,14 +109,14 @@
 					</div>
                 <label><input type="checkbox" name="item" value="Quesadilla" onchange="toggleIngredients(this, 'quesadilla-ingredients')"> Quesadilla</label>
 					<div id="quesadilla-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="quesadilla-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="shredded cheese" disabled> shredded cheese</label>
 							<label><input type="checkbox" name="ingredient" value="flour tortillas" disabled> flour tortillas</label>
 						</p>
 					</div>
                 <label><input type="checkbox" name="item" value="Hot Dogs" onchange="toggleIngredients(this, 'hot-dog-ingredients')"> Hot Dogs</label>
 					<div id="hot-dog-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="hot-dog-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="hot dogs" disabled> hot dogs</label>
 							<label><input type="checkbox" name="ingredient" value="hot dog buns" disabled> hot dog buns</label>
 							<label><input type="checkbox" name="ingredient" value="ketchup"> ketchup</label>
@@ -213,7 +133,7 @@
             <form id="dinner-form">
                 <label><input type="checkbox" name="item" value="Lasagna" onchange="toggleIngredients(this, 'lasagna-ingredients')"> Lasagna</label>
 				<div id="lasagna-ingredients" style="display: none;">
-					<p id="ingredients-list">
+					<p id="lasagna-ingredients-list">
 						<label><input type="checkbox" name="ingredient" value="lasagna noodles" disabled> lasagna noodles</label>
 						<label><input type="checkbox" name="ingredient" value="mozzarella" disabled> mozzarella</label>
 						<label><input type="checkbox" name="ingredient" value="cheddar" disabled> cheddar</label>
@@ -231,7 +151,7 @@
 				<!-- Update the Spaghetti item in the dinner-form -->
 				<label><input type="checkbox" name="item" value="Spaghetti" onchange="toggleIngredients(this, 'spaghetti-ingredients')"> Spaghetti</label>
 					<div id="spaghetti-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="spaghetti-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="spaghetti noodles" disabled> spaghetti noodles</label>
 							<label><input type="checkbox" name="ingredient" value="tomato paste" disabled> tomato paste</label>
 							<label><input type="checkbox" name="ingredient" value="diced tomatoes" disabled> diced tomatoes</label>
@@ -243,7 +163,7 @@
 					</div>
                 <label><input type="checkbox" name="item" value="Handmade Pizza" onchange="toggleIngredients(this, 'pizza-ingredients')"> Handmade Pizza</label>
 					<div id="pizza-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="pizza-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="pizza dough" disabled> pizza dough</label>
 							<label><input type="checkbox" name="ingredient" value="tomato paste" disabled> tomato paste</label>
 							<label><input type="checkbox" name="ingredient" value="diced tomatoes" disabled> diced tomatoes</label>
@@ -258,7 +178,7 @@
 					</div>
 				<label><input type="checkbox" name="item" value="Frozen Pizza" onchange="toggleIngredients(this, 'frozen-pizza-ingredients')"> Frozen Pizza</label>
 					<div id="frozen-pizza-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="frozen-pizza-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="pepperoni pizza"> pepperoni pizza</label>
 							<label><input type="checkbox" name="ingredient" value="margarita pizza"> margarita pizza</label>
 							<label><input type="checkbox" name="ingredient" value="cheese pizza"> cheese pizza</label>
@@ -266,18 +186,18 @@
 					</div>
 				<label><input type="checkbox" name="item" value="Taquitos" onchange="toggleIngredients(this, 'taquitos-ingredients')"> Taquitos</label>
 					<div id="taquitos-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="taquitos-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="chicken taquitos"> chicken taquitos</label>
 							<label><input type="checkbox" name="ingredient" value="chicken and cheese taquitos"> chicken and cheese taquitos</label>
 						</p>
 					</div>
                 <label><input type="checkbox" name="item" value="Super Nachos" onchange="toggleIngredients(this, 'super-nachos-ingredients')"> Super Nachos</label>
 					<div id="super-nachos-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="super-nachos-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="nacho chips" disabled> nacho chips</label>
 							<label><input type="checkbox" name="ingredient" value="salsa"> salsa</label>
 							<label><input type="checkbox" name="ingredient" value="sour cream"> sour cream</label>
-							<label><input type="checkbox" name="ingredient" value="shreaded cheese"> shreaded cheese</label>
+							<label><input type="checkbox" name="ingredient" value="shredded cheese"> shredded cheese</label>
 							<label><input type="checkbox" name="ingredient" value="refried beans"> refried beans</label>
 							<label><input type="checkbox" name="ingredient" value="ground turkey"> ground turkey</label>
 							<label><input type="checkbox" name="ingredient" value="tomatoes"> tomatoes</label>
@@ -288,12 +208,12 @@
 					</div>
 				<label><input type="checkbox" name="item" value="Bean Burrito" onchange="toggleIngredients(this, 'bean-burrito-ingredients')"> Bean Burrito</label>
 					<div id="bean-burrito-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="bean-burrito-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="flour tortillas" disabled> flour tortillas</label>
 							<label><input type="checkbox" name="ingredient" value="refried beans" disabled> refried beans</label>
 							<label><input type="checkbox" name="ingredient" value="salsa"> salsa</label>
 							<label><input type="checkbox" name="ingredient" value="sour cream"> sour cream</label>
-							<label><input type="checkbox" name="ingredient" value="shreaded cheese"> shreaded cheese</label>
+							<label><input type="checkbox" name="ingredient" value="shredded cheese"> shredded cheese</label>
 							<label><input type="checkbox" name="ingredient" value="tomatoes"> tomatoes</label>
 							<label><input type="checkbox" name="ingredient" value="green onions"> green onions</label>
 							<label><input type="checkbox" name="ingredient" value="cilantro"> cilantro</label>
@@ -302,13 +222,13 @@
 					</div>
 				<label><input type="checkbox" name="item" value="Soft Tacos" onchange="toggleIngredients(this, 'soft-taco-ingredients')"> Soft Tacos</label>
 					<div id="soft-taco-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="soft-taco-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="corn tortillas" disabled> corn tortillas</label>
 							<label><input type="checkbox" name="ingredient" value="ground turkey"> ground turkey</label>
 							<label><input type="checkbox" name="ingredient" value="refried beans"> refried beans</label>
 							<label><input type="checkbox" name="ingredient" value="salsa"> salsa</label>
 							<label><input type="checkbox" name="ingredient" value="sour cream"> sour cream</label>
-							<label><input type="checkbox" name="ingredient" value="shreaded cheese"> shreaded cheese</label>
+							<label><input type="checkbox" name="ingredient" value="shredded cheese"> shredded cheese</label>
 							<label><input type="checkbox" name="ingredient" value="tomatoes"> tomatoes</label>
 							<label><input type="checkbox" name="ingredient" value="green onions"> green onions</label>
 							<label><input type="checkbox" name="ingredient" value="cilantro"> cilantro</label>
@@ -317,10 +237,10 @@
 					</div>
 				<label><input type="checkbox" name="item" value="Loaded Baked Potato" onchange="toggleIngredients(this, 'baked-potato-ingredients')"> Loaded Baked Potato</label>
 					<div id="baked-potato-ingredients" style="display: none;">
-						<p id="ingredients-list">
+						<p id="baked-potato-ingredients-list">
 							<label><input type="checkbox" name="ingredient" value="potatoes" disabled> potatoes</label>
 							<label><input type="checkbox" name="ingredient" value="sour cream"> sour cream</label>
-							<label><input type="checkbox" name="ingredient" value="shreaded cheese"> shreaded cheese</label>
+							<label><input type="checkbox" name="ingredient" value="shredded cheese"> shredded cheese</label>
 							<label><input type="checkbox" name="ingredient" value="bacon"> bacon</label>
 							<label><input type="checkbox" name="ingredient" value="chives"> chives</label>
 							<label><input type="checkbox" name="ingredient" value="butter"> butter</label>
@@ -355,263 +275,12 @@
                 <label><input type="checkbox" name="item" value="Something Else"> Something Else</label>
             </form>
         </article>
-		
-		<article id="available-ingredients-article">
-			<h2 id="available-ingredients-title" class="ingredients-title">Available Ingredients</h2>
-			<ul id="available-ingredients-list" class="ingredients-list">
-				<!-- Items will be added dynamically using JavaScript -->
-			</ul>
-			<h2 id="missing-ingredients-title" class="ingredients-title">Missing Ingredients</h2>
-			<ul id="missing-ingredients-list" class="ingredients-list">
-				<!-- Items will be added dynamically using JavaScript -->
-			</ul>
-		</article>
 
     </section>
 
     <button onclick="sendOrder()">Request</button>
 
-    <script>
-		// Array of available ingredients
-		const availableIngredients = [
-			'bread', 
-			'almond butter', 
-			'strawberry jam', 
-			'eggs', 
-			'maple syrup', 
-			'pancake mix', 
-			'cinnamon', 
-			'potatoes', 
-			'garlic', 
-			'butter', 
-			'sliced ham', 
-			'sliced cheese', 
-			'tunafish', 
-			'tomatoes', 
-			'butter spread', 
-			'mustard', 
-			'mayo', 
-			'sliced pickles', 
-			'shredded cheese', 
-			'flour tortillas', 
-			'ketchup', 
-			'diced tomatoes', 
-			'italian seasoning', 
-			'ham', 
-			'kalamata olives', 
-			'margarita pizza', 
-			'chicken and cheese taquitos', 
-			'nacho chips', 
-			'sour cream', 
-			'refried beans', 
-			'garlic salt', 
-			'basil pesto', 
-			'cereal',
-			'vanilla almond milk',
-			'banana',
-			'mushrooms',
-			'bacon',
-			'chocolate chip frozen waffles',
-			'salsa',
-			'green onions'
-		];
-
-	    	// Array of missing ingredients
-		const missingIngredients = [
-			'strawberries',
-			'blueberries',
-			'plain frozen waffles',
-			'spinach',
-			'sliced turkey',
-			'hot dogs',
-			'hot dog buns',
-			'lasagna noodles',
-			'mozzarella',
-			'cheddar',
-			'colby jack cheese',
-			'goat cheese',
-			'tomato paste',
-			'onion',
-			'ground turkey',
-			'spaghetti noodles',
-			'pizza dough',
-			'pepperoni',
-			'pepperoni pizza',
-			'cheese pizza',
-			'chicken taquitos',
-			'corn tortillas',
-			'chives',
-			'rosso pesto',
-			'cilantro',
-			'guacamole'
-		];
-	    
-		// Function to apply classes to labels based on ingredient availability
-		function applyIngredientClasses() {
-			const allIngredients = Array.from(document.querySelectorAll('label:has(input[name="ingredient"])'));
-
-			allIngredients.forEach(label => {
-				const ingredient = label.querySelector('input[name="ingredient"]').value.toLowerCase();
-				const isAvailable = availableIngredients.includes(ingredient);
-				label.classList.toggle('available', isAvailable);
-				label.classList.toggle('unavailable', !isAvailable);
-			});
-		}
-		
-        function sendOrder() {
-            const breakfastItems = getCheckedItems("breakfast-form");
-            const lunchItems = getCheckedItems("lunch-form");
-			const dinnerItems = getCheckedItems("dinner-form");
-			const sidesItems = getCheckedItems("sides-form");
-            const otherItems = getCheckedItems("other-form");
-
-            const subject = encodeURIComponent("Feed Me!");
-            const bodyArray = [];
-
-            if (breakfastItems) bodyArray.push(`Breakfast:\n${breakfastItems}`);
-            if (lunchItems) bodyArray.push(`Lunch:\n${lunchItems}`);
-			if (dinnerItems) bodyArray.push(`Dinner:\n${dinnerItems}`);
-            if (sidesItems) bodyArray.push(`Sides:\n${sidesItems}`);
-            if (otherItems) bodyArray.push(`Other:\n${otherItems}`);
-			
-			const allIngredients = getAllCheckedIngredients();
-			bodyArray.push(`Ingredients:\n${allIngredients}`);
-			
-			const shoppingList = getShoppingList();
-			if (shoppingList) bodyArray.push(`Shopping List:\n${shoppingList}`);
-			
-            const body = encodeURIComponent(bodyArray.join("\n\n"));
-
-            const yourEmailAddress = "delphedwin@gmail.com";
-			const mailtoLink = `mailto:${yourEmailAddress}?subject=${subject}&body=${body}`;
-			window.location.href = mailtoLink;
-
-        }
-		
-		function getAllCheckedIngredients(){
-			const breakfastIngredients = getIngredients("breakfast-form");
-			const lunchIngredients = getIngredients("lunch-form");
-			const dinnerIngredients = getIngredients("dinner-form");  
-			// Combine all ingredients into a single array
-			const allIngredientsArray = [].concat(breakfastIngredients, lunchIngredients, dinnerIngredients);
-			// Join the array into a string without any separator
-			const allIngredientsString = allIngredientsArray.join('');
-			return allIngredientsString;
-		}
-		
-		function getShoppingList() {
-			const breakfastIngredients = getIngredients("breakfast-form");
-			const lunchIngredients = getIngredients("lunch-form");
-			const dinnerIngredients = getIngredients("dinner-form");
-			
-			// Combine all ingredients into a single array
-			const allIngredientsArray = [].concat(breakfastIngredients, lunchIngredients, dinnerIngredients);
-			const allIngredientsArraySplit = allIngredientsArray.join('\n').split('\n').filter(item => item.trim() !== '');
-			
-			// Filter out ingredients that are in the availableIngredients array
-			const shoppingListIngredients = allIngredientsArraySplit.filter(ingredient => !availableIngredients.includes(ingredient));
-			
-			// Join the array into a string without any separator
-			const shoppingListIngredientsString = shoppingListIngredients.join('\n');
-
-			return shoppingListIngredientsString;
-		}
-
-        function getCheckedItems(formId) {
-			const form = document.getElementById(formId);
-			const checkedItems = Array.from(form.elements)
-				.filter(item => item.type === "checkbox" && item.checked && item.name !== "ingredient")
-				.map(item => {
-					if (item.value === "Something from Food.com") {
-						return `Here's a link to a recipe on Food.com: `;
-					} else if (item.value === "Something Else") {
-						return "Could I please have ...";
-					} else {
-						return item.value;
-					}
-				});
-			return checkedItems.join("\n");
-		}
-		
-		function toggleIngredients(checkbox, ingredientsDivId) {
-			const ingredientsDiv = document.getElementById(ingredientsDivId);
-			
-			if (checkbox.checked) {
-				ingredientsDiv.style.display = "block";
-			} else {
-				ingredientsDiv.style.display = "none";
-			}
-
-			Array.from(ingredientsDiv.querySelectorAll('[name="ingredient"]')).forEach(ingredientCheckbox => {
-				ingredientCheckbox.checked = checkbox.checked;
-			});
-		}
-
-		function getIngredients(...ingredientsDivIds) {
-			const ingredientsArray = [];
-			ingredientsDivIds.forEach(ingredientsDivId => {
-				const ingredientsDiv = document.getElementById(ingredientsDivId);
-				Array.from(ingredientsDiv.querySelectorAll('[name="ingredient"]:checked')).forEach(ingredientCheckbox => {
-					ingredientsArray.push(ingredientCheckbox.value);
-				});
-			});
-			return Array.from(new Set(ingredientsArray)).concat(['']).join("\n");
-		}
-
-		function getCheckedItems(formId) {
-			const form = document.getElementById(formId);
-			const checkedItems = Array.from(form.elements)
-				.filter(item => item.type === "checkbox" && item.checked && item.name !== "ingredient")
-				.map(item => {
-					if (item.value === "Something from Food.com") {
-						return `Here's a link to a recipe on Food.com: `;
-					} else if (item.value === "Something Else") {
-						return "Could I please have ...";
-					} else {
-						return item.value;
-					}
-				});
-			return checkedItems.join("\n");
-		}
-		
-		// Function to toggle the visibility of the ingredient list
-		function toggleIngredients(listId) {
-			const ingredientsList = document.getElementById(listId);
-			ingredientsList.style.display = (ingredientsList.style.display === 'none') ? 'block' : 'none';
-		}
-
-		// Function to populate the ingredient list
-		function populateIngredients(listId, ingredientsArray) {
-			const ingredientsList = document.getElementById(listId);
-
-			// Clear any existing items
-			ingredientsList.innerHTML = '';
-
-			// Add items from the ingredientsArray
-			ingredientsArray.forEach(ingredient => {
-				const listItem = document.createElement('li');
-				listItem.textContent = ingredient;
-				ingredientsList.appendChild(listItem);
-			});
-		}
-
-		// Attach event listeners to toggle visibility when clicking on the title
-		document.getElementById('available-ingredients-title').addEventListener('click', function () {
-			toggleIngredients('available-ingredients-list');
-		});
-
-		document.getElementById('missing-ingredients-title').addEventListener('click', function () {
-			toggleIngredients('missing-ingredients-list');
-		});
-
-		// Populate the ingredient lists on page load
-		window.onload = function () {
-			populateIngredients('available-ingredients-list', availableIngredients);
-			populateIngredients('missing-ingredients-list', missingIngredients);
-			applyIngredientClasses();
-		};
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
